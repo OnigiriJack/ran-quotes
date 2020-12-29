@@ -1,14 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function App() {
 
   const [quoteInfo, setQuoteInfo] = useState({
-    quote: "Knowing is not enough; we must apply!",
-    author: "Johann Wolfgang von Goethe"
+
   });
+
+  useEffect(() => {
+    getQuote();
+    //if I added a state varibale in the array the app will rerender when it senses the change of the value
+  }, []);
   function getQuote() {
     fetch("https://api.quotable.io/random")
       .then(function (resp) {
@@ -21,9 +25,7 @@ function App() {
         })
         console.log(data);
       });
-    // fetch("https://quotes.rest/quote/random?language=en&limit=1")
-    //   .then(response => response.json())
-    //   .then(data => console.log(data))
+
 
   }
   return (
@@ -34,7 +36,7 @@ function App() {
           <p id="text">  {quoteInfo.quote}</p>
           <p id="author"> {quoteInfo.author} </p>
           <button id="new-quote" onClick={getQuote}>new quote</button>
-          <a id="tweet-quote" href="https://google.com">i am clickable</a>
+          <a id="tweet-quote" href={`https://twitter.com/intent/tweet?text=${quoteInfo.quote} - ${quoteInfo.author}`} >i am clickable</a>
         </div>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
