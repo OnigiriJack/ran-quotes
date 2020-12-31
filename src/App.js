@@ -1,7 +1,8 @@
 
 import './App.css';
 import { useEffect, useState } from 'react';
-import { TwitterShareButton } from 'react-twitter-embed';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import Button from '@material-ui/core/Button';
 
 function App() {
 
@@ -25,22 +26,18 @@ function App() {
         })
         console.log(data);
       });
-
-
   }
   return (
     <div className="App">
       <header className="App-header">
-
         <div id="quote-box">
-
           <p id="text">  {quoteInfo.quote}</p>
-          <p id="author"> {quoteInfo.author} </p>
-          <button id="new-quote" onClick={getQuote}>new quote</button>
-
-          <a id="tweet-quote" href={`https://twitter.com/intent/tweet?text=${quoteInfo.quote} &hashtags=${quoteInfo.author},FCC,React`} >Tweet Me</a>
+          <p id="author">- {quoteInfo.author} </p>
+          <div id="buttons-row">
+            <Button variant="contained" size="small" color="primary" id="new-quote" onClick={getQuote} disableElevation>new quote</Button>
+            <a id="tweet-quote" href={`https://twitter.com/intent/tweet?text=${quoteInfo.quote} &hashtags=${quoteInfo.author},FCC,React`} >< TwitterIcon fontSize="large" /></a>
+          </div>
         </div>
-
       </header>
     </div >
   );

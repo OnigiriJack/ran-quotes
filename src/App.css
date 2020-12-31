@@ -1,10 +1,21 @@
-.App {
-  text-align: center;
+html,
+body {
+  background-color: #282c34;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#quote-box {
+  border-radius: 25px;
+  padding: 20px;
+}
+#author {
+  color: aquamarine;
+}
+#buttons-row {
+  display: flex;
+  justify-content: space-evenly;
+}
+.App {
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,14 +24,19 @@
   }
 }
 
+a {
+  color: aliceblue;
+}
+
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  padding: 20px;
   color: white;
 }
 
