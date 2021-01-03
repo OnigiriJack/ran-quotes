@@ -1,14 +1,18 @@
 
 import './App.css';
+import "./japaneseQuotes.json";
 import { useEffect, useState } from 'react';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Button from '@material-ui/core/Button';
+import Switch from '@material-ui/core/Switch';
 
 function App() {
 
   const [quoteInfo, setQuoteInfo] = useState({
-
   });
+  const [languageState, setLangugageState] = useState(
+    "en"
+  )
   // need to remove whitespace from author
   useEffect(() => {
     getQuote();
@@ -27,10 +31,21 @@ function App() {
         console.log(data);
       });
   }
+  const changeLanguage = () => {
+    if (languageState === "en") setLangugageState("jp")
+    if (languageState === "jp") setLangugageState("en")
+    console.log(languageState)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <div id="quote-box">
+          <Switch
+            onChange={changeLanguage}
+            name="lan"
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />
           <p id="text">  {quoteInfo.quote}</p>
           <p id="author">- {quoteInfo.author} </p>
           <div id="buttons-row">

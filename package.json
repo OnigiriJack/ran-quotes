@@ -11,11 +11,17 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "cherio": "^1.0.0-rc.2",
+    "cli-table": "^0.3.4",
+    "got": "^11.8.1",
+    "jsdom": "^16.4.0",
+    "json-format": "^1.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-scripts": "4.0.1",
     "react-twitter-embed": "^3.0.3",
+    "request-promise": "^4.2.6",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
