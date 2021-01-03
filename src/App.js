@@ -7,33 +7,35 @@ import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+
 function App() {
 
   const [quoteInfo, setQuoteInfo] = useState({
   });
+
   let [languageState, setLangugageState] = useState(
-    "en"
-  )
-  // need to remove whitespace from author
+    {
+      "value": "en",
+      "label": "🇺🇸"
+    }
+  );
+
+
+
   useEffect(() => {
     getQuote();
-    console.log(jQuotes)
-
     //if I added a state varibale in the array the app will rerender when it senses the change of the value
   }, []);
+
   function getQuote() {
-    if (languageState === "en") {
-      console.log("here")
+    if (languageState.value === "en") {
       fetch("https://api.quotable.io/random")
-        .then(function (resp) {
-          return resp.json();
-        })
-        .then(function (data) {
+        .then((resp) => resp.json())
+        .then((data) => {
           setQuoteInfo({
             quote: data.content,
             author: data.author
-          })
-          console.log(data);
+          });
         });
     }
     else {
@@ -46,28 +48,32 @@ function App() {
         }
       )
     }
-
   }
+
   const changeLanguage = () => {
-
-    if (languageState === "en") setLangugageState("jp")
-    if (languageState === "jp") setLangugageState("en")
-
+    if (languageState.value === "en") setLangugageState({ "value": "jp", "label": "🇯🇵" })
+    if (languageState.value === "jp") setLangugageState({ "value": "en", "label": "🇺🇸" })
   }
 
   return (
-    <div className="App">
+    <div className="App ">
       <header className="App-header">
-        <div id="quote-box">
-          <FormControlLabel
-            control={<Switch onChange={changeLanguage}
-              name="lan"
-              inputProps={{ 'aria-label': 'secondary checkbox' }} />}
-            label={languageState} />
+        <div id="quote-box" >
+          <div id="top-row">
+            <h2>Quote Machine</h2>
+
+            <FormControlLabel
+              id="language-switch"
+              control={<Switch onChange={changeLanguage}
+                name="lan"
+                inputProps={{ 'aria-label': 'secondary checkbox' }} />}
+              label={languageState.label}
+              labelPlacement="start" />
+          </div>
           <p id="text">  {quoteInfo.quote}</p>
-          <p id="author">- {quoteInfo.author} </p>
-          <div id="buttons-row">
-            <Button variant="contained" size="small" color="primary" id="new-quote" onClick={getQuote} disableElevation>new quote</Button>
+          <p id="author" className={languageState.value === "en" ? 'background-blue' : 'background-red'}>- {quoteInfo.author} </p>
+          <div id="bottom-row" >
+            <Button variant="contained" size="small" id="new-quote" onClick={getQuote} >new quote</Button>
             <a id="tweet-quote" href={`https://twitter.com/intent/tweet?text=${quoteInfo.quote} &hashtags=${quoteInfo.author},FCC,React`} >< TwitterIcon fontSize="large" /></a>
           </div>
         </div>

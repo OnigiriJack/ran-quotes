@@ -1,36 +1,41 @@
-html,
-body {
-  background-color: #282c34;
+h2 {
+  padding-right: 15px;
 }
 
 #quote-box {
   border-radius: 25px;
   padding: 20px;
+  background-color: #777777;
 }
-#author {
-  color: aquamarine;
+
+#language-switch {
+  size: 15px;
 }
-#buttons-row {
+
+#top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+#bottom-row {
   display: flex;
   justify-content: space-evenly;
 }
+
 .App {
   text-align: center;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 a {
   color: aliceblue;
 }
+a:hover {
+  color: rgb(73, 165, 240);
+}
 
 .App-header {
   background-color: #282c34;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,4 +56,12 @@ a {
   to {
     transform: rotate(360deg);
   }
+}
+
+.background-red {
+  color: rgba(228, 179, 179, 0.897);
+}
+
+.background-blue {
+  color: rgb(169, 189, 252);
 }
