@@ -1,4 +1,4 @@
-{
+export const jQuotes = {
   "data": [
     {
       "author": "写真家・江成常夫さん",
