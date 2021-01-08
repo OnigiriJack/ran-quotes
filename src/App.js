@@ -27,6 +27,12 @@ function App() {
     //if I added a state varibale in the array the app will rerender when it senses the change of the value
   }, []);
 
+  useEffect(() => {
+    getQuote();
+    //if I added a state varibale in the array the app will rerender when it senses the change of the value
+  }, [languageState]);
+
+
   function getQuote() {
     if (languageState.value === "en") {
       fetch("https://api.quotable.io/random")
@@ -51,8 +57,13 @@ function App() {
   }
 
   const changeLanguage = () => {
-    if (languageState.value === "en") setLangugageState({ "value": "jp", "label": "🇯🇵" })
-    if (languageState.value === "jp") setLangugageState({ "value": "en", "label": "🇺🇸" })
+    if (languageState.value === "en") {
+      setLangugageState({ "value": "jp", "label": "🇯🇵" });
+    }
+    if (languageState.value === "jp") {
+      setLangugageState({ "value": "en", "label": "🇺🇸" });
+    }
+
   }
 
   return (
@@ -64,7 +75,8 @@ function App() {
 
             <FormControlLabel
               id="language-switch"
-              control={<Switch onChange={changeLanguage}
+              control={<Switch
+                onChange={changeLanguage}
                 name="lan"
                 inputProps={{ 'aria-label': 'secondary checkbox' }} />}
               label={languageState.label}
