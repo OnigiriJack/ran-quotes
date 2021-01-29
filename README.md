@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Japanese and English Quote Machine
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Inspire yourself with this [Quote Machine](https://master.d3ka5rptdm86es.amplifyapp.com/) that gives shows you Japanese and English Quotes.
 
 ## Available Scripts
 
